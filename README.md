@@ -1,2 +1,2 @@
 # Vain-App
-GUI for NCNN-Vulkan versions of DAIN, RIFE and CAINE video frame interpolaters.
+GUI for NCNN-Vulkan versions of DAIN, RIFE and CAIN video frame interpolaters.
