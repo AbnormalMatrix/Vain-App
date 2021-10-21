@@ -5,13 +5,14 @@ algo = "dain"
 
 def split_frames(video_input_filename):
 	os.system("rm frames/*")
+	os.system("rm output/*")
 	os.system(f'ffmpeg -i "{video_input_filename}" -compression_level 3 frames/%8d.png')
 
 def run_dain(model):
 	os.system(f"./{model}-ncnn-vulkan -v -i frames -o output")
 
 def combine_frames(output_fps):
-	os.system(f"ffmpeg -i output/* -framerate {output_fps} output.mp4")
+	os.system(f"ffmpeg -r {output_fps} -pattern_type glob -i 'output/*.png' -c:v libx264 out.mp4")
 	
 
 layout = [[sg.Text("Welcome to Vain-App")],[sg.Text("Open video file: "), sg.FileBrowse(key="-IN-")],
